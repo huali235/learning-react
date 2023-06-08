@@ -1,6 +1,9 @@
+import ReactIcon from "../imgs/react-icon.jpg";
+
 export default MainContent = () => {
   return (
     <div className="main-container">
+      <img src={ReactIcon} alt="react-icon" className="react-icon-large" />
       <h1>Fun Facts About React</h1>
       <ul className="facts-list">
         <li>Was first released in 2013</li>
