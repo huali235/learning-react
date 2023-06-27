@@ -1,7 +1,12 @@
 import { useState } from "react";
+import "./styles.css";
 
 export default function App() {
-  return <Counter />;
+  return (
+    <div className="App">
+      <Counter />
+    </div>
+  );
 }
 
 function Counter() {
@@ -16,6 +21,12 @@ function Counter() {
     setDate(newDate);
   };
 
+  const handleReset = () => {
+    setStep(1);
+    setCount(0);
+    setDate(new Date());
+  };
+
   const options = {
     weekday: "long",
     year: "numeric",
@@ -26,18 +37,30 @@ function Counter() {
   return (
     <div>
       <div>
-        <button onClick={() => setStep((s) => s - 1)}>-</button>
-        <span>Step: {step}</span>
-        <button onClick={() => setStep((s) => s + 1)}>+</button>
+        <input
+          type="range"
+          min="0"
+          max="10"
+          value={step}
+          onChange={(event) => setStep(Number(event.target.value))}
+        />
+        <span>{step}</span>
       </div>
       <div>
         <button onClick={() => handleCountChange(count - step)}>-</button>
-        <span>Count: {count}</span>
+        <input
+          type="text"
+          value={count}
+          onChange={(event) => handleCountChange(Number(event.target.value))}
+        />
         <button onClick={() => handleCountChange(count + step)}>+</button>
       </div>
       <p>
         {count} days from today is {date.toLocaleDateString(undefined, options)}
       </p>
+      {count !== 0 || step !== 1 ? (
+        <button onClick={handleReset}>Reset</button>
+      ) : null}
     </div>
   );
 }
