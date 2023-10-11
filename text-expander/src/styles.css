@@ -13,3 +13,10 @@ body {
   border-radius: 7px;
   background-color: #f7f7f7;
 }
+
+.text-expander-button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
