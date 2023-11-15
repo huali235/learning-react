@@ -1,9 +1,7 @@
 import Options from "./Options";
-import { useQuiz } from "./hooks/useQuiz";
 
-function Question() {
-  const { questions, index, dispatch, answer } = useQuiz();
-  const question = questions.at(index);
+function Question({ question, dispatch, answer }) {
+  console.log(question);
   return (
     <div>
       <h4>{question.question}</h4>
